@@ -1,0 +1,7 @@
+{
+  "name": "Obligatorio Taller",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

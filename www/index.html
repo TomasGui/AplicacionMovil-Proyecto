@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Obligatorio 2022</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="theme-color" content="#31d53d" />
+    <!-- Incluya el archivo CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Incluya el archivo JavaScript  -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- Ionic lib -->
+    <script type="module"src="https://unpkg.com/@ionic/core@next/dist/ionic/ionic.esm.js"></script>
+    <!-- Ionic lib fallback for older browsers -->
+    <script nomodule src="https://unpkg.com/@ionic/core@next/dist/ionic/ionic.js"></script>
+    <!-- Ionic Styles-->
+    <link rel="stylesheet" href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css"/>
+        <!-- un-comment this code to enable service worker
+       <script>
+      if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+<pagina-listaenvios class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-title>Lista Envios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    
+  </ion-content>
+
+</pagina-listaenvios>
+    }
+  </script>-->
+  </head>
+  <body>
+    <!--Cuerpo de la App-->
+    <ion-app>
+        <!-- rutas de la aplicacion  -->
+        <ion-router>
+          <ion-route url="home" component="pagina-home"></ion-route>
+          <ion-route url="registro" component="pagina-registro"></ion-route>
+          <ion-route url="/" component="pagina-login"></ion-route>
+          <ion-route url="calculadora" component="pagina-calculadora"></ion-route>
+          <ion-route url="agregar" component="pagina-agregarenvio"></ion-route>
+          <ion-route url="lista" component="pagina-listaenvio"></ion-route>
+          <ion-route url="detalleenvio" component="pagina-detalleenvio"></ion-route>
+          <ion-route url="estadisticas" component="pagina-estadisticas"></ion-route>
+          <ion-route url="ciudadcercana" component="pagina-ciudadcercana"></ion-route>
+        </ion-router>
+        <ion-nav></ion-nav>
+
+        <!-- menu lateral -->
+      <ion-menu side="start" content-id="main">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+              Menu
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+          <ion-list>
+            <ion-item  class="item-menu"  href="home">Home</ion-item>
+            <ion-item  class="item-menu" href="calculadora">Calculadora de Distancia</ion-item>
+            <ion-item  class="item-menu" href="agregar">Agregar Envio</ion-item>
+            <ion-item  class="item-menu" href="lista">Lista Envios</ion-item>
+            <ion-item  class="item-menu" href="estadisticas">Estadisticas</ion-item>
+            <ion-item  class="item-menu" href="ciudadcercana">Ciudades Cercanas</ion-item>
+            <ion-item  class="item-menu" id="cerrarSesion"></ion-icon>Cerrar Sesion</ion-icon></ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      <div id="main"></div>
+
+<!-- pagina de registro -->
+<pagina-registro class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+        <ion-title>Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content >
+    <ion-item >
+      <ion-label>Nombre de Usuario </ion-label>
+        <ion-input id="registro_nombre"  placeholder="Ingrese un nombre" type="text" required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password </ion-label>
+      <ion-input id="registro_password" placeholder="Ingresar un password valido" type="password" required ></ion-input>
+    </ion-item>
+
+      <ion-button id="registrar_btn" expand="block">Registrar</ion-button>
+      <ion-item>
+        <p>Ya tienes cuenta ? </p>
+        <ion-router-link href="/" class="underline md ion-activatable hydrated">Ingresar aquí</ion-router-link>
+      </ion-item>
+  </ion-content>
+</pagina-registro>
+<!--Pagina Login-->
+<pagina-login class="pagina ion-page">
+  <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Login</ion-title>
+      </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+        <ion-input id="login_nombre"  placeholder="Ingrese su usuario" type="text" required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input id="login_password" placeholder="Ingresar su password" type="password" required ></ion-input>
+    </ion-item>
+      <ion-button id="login_btn" expand="block">Ingresar</ion-button>
+      <ion-item>
+        <p>No tienes cuenta? </p>
+        <ion-router-link href="/registro" class="md ion-activatable hydrated"> Registrate aquí </ion-router-link>
+      </ion-item>
+  </ion-content>
+
+
+</pagina-login>
+
+<!-- pagina home -->
+<pagina-home class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <p> Obligatorio TALLER </p>
+  </ion-content>
+</pagina-home>
+
+<!-- pagina calculadora -->
+<pagina-calculadora class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-title>Calculadora de Distancia</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item>
+      <ion-label>Ciudad Origen</ion-label>
+      <ion-select id="ciudad1" multiple="false" placeholder="Ejegir ciudad origen">
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ciudad Destino</ion-label>
+      <ion-select id="ciudad2" multiple="false" placeholder="Ejegir ciudad destino">
+      </ion-select>
+    </ion-item>
+      <ion-button id="btn_calcular_distancia" expand="block">Calcular Distancia</ion-button>
+    <div style="height: 400px;" id="map"></div>
+    <ion-item>
+      <div id = "distanciaNumero"></div>
+    </ion-item>
+  </ion-content>
+</pagina-calculadora>
+
+<!--pagina agregar envio-->
+<pagina-agregarenvio class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-title>Agregar envio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-item>
+      <ion-label>Ciudad Origen</ion-label>
+      <ion-select id="agregar_ciudadOrigen">
+        <ion-select-option value=""> -- Seleccione Ciudad -- </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ciudad Destino</ion-label>
+      <ion-select id="agregar_ciudadDestino">
+        <ion-select-option value=""> -- Seleccione Ciudad -- </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select id="agregar_categoria">
+        <ion-select-option value=""> -- Categoria -- </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Peso (Kg)</ion-label>
+      <ion-input id="agregar_peso" placeholder="Ingresar peso en Kg" type="number" required ></ion-input>
+    </ion-item>
+    <ion-button id="btn_agregar_envio" expand="block">Agregar</ion-button>
+  </ion-content>
+  </pagina-agregarenvio>
+
+  <!--pagina lista envios-->
+  <pagina-listaenvio class="pagina ion-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+          <ion-title>Lista envios</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list id="lista_envios">
+      </ion-list>
+    </ion-content>
+
+
+  </pagina-listaenvio>
+
+  <pagina-detalleenvio class="pagina ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="lista"></ion-back-button>
+      </ion-buttons>
+        <ion-title>Detalle de Envio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div id="detalles"></div>
+  </ion-content>
+  </pagina-detalleenvio>
+
+
+  <pagina-estadisticas class="pagina ion-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+          <ion-title>Estadisticas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-item>
+        <div id="gastoTotalEnvios"></div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ciudades con mas envios:</ion-label>
+      </ion-item>
+      <ion-list id="departamentosMasEnvios">
+      </ion-list>
+    </ion-content>
+    </pagina-estadisticas>
+
+    <pagina-ciudadcercana class="pagina ion-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+            <ion-title>Ciudades Cercanas</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+
+          <ion-button id="btn_ciudad_cercana" expand="block">Buscar Ciudad Mas Cercana</ion-button>
+
+        <div id="contenedorMapa" style="height: 500px;"></div>
+      </ion-content>
+    </pagina-ciudadcercana>
+
+    </ion-app>
+    <script  src="capacitor.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
+
